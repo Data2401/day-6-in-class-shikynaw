@@ -16,15 +16,26 @@ The questions from your notes today are below, please copy your answers them her
 1. Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent. 
 
 ```{R}
-
-
+f_to_c <- function(fahrenheit) {
+  celsius <- (fahrenheit - 32) *5/9
+  return(celsius)
+}
+f_to_c(212)
 ```
 
 2. Expand that function so that it takes a temperature in Fahrenheit and a distance in feet and returns **both** the temperature in Celcius and the distance in meters (you'll likely need to remember the `c()` function!)
 
 
 ```{r}
+convertboth <- function(fahrenheit, feet) {
+  celsius <- (fahrenheit - 32) *5/9
+  meters <- (feet * 0.3048)
 
+  return(c(celsius, meters))
+}
+
+f_to_c(212)
+convertboth(212,3)
 
 ```
 
@@ -32,23 +43,54 @@ The questions from your notes today are below, please copy your answers them her
 3. Write a function that prints out a statement of whether the number passed as an argument is positive, negative or 0. 
 
 ```{R}
+num_type <- function(number){
+  if (number > 0) {
+    print("Number is positive.")
+  } else if (number < 0) {
+    print("Number is negative.")
+  } else {
+    print("Number is zero.")
+  }
+}
 
-
+num_type(5)
+num_type(-10)
+num_type(0)
 ```
 
 4. Write a function that returns the absolute value of the number passed as an argument.
    + Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary. 
    
 ```{r}
+abs_val <- function(number) {
+  if (number < 0) {
+    return ( -1 * number)
+  } else {
+    return (number)
+  }
+}
 
-
+abs_val(-5)
+abs_val(7)
 ```
 
 5. Hard mode: add an error check to that function that prints out the string "Please pass a numerical value to this function" if the user passes the function a string. 
    + There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
    
 ```{r}
+abs_val <- function(number) {
+  if (!is.numeric(number)) {
+    print("Please pass a numerical value to this function")
+  } else if(number < 0) {
+    return ( -1 * number)
+  } else {
+    return (number)
+  }
+}
 
+abs_val("What?")
+abs_val(-5)
+abs_val(7)
 
 
 ```
